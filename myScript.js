@@ -86,9 +86,8 @@ function populateDislikeFoodList(item) {
       var lines = data.split('\n');
 
       for (var line = 0; line < lines.length; line++) {
-        //Push each item into the array
-        item["dislikeFoodList"].push(data)
-        //console.log(lines[line]);
+        //Push each item into the array - Make lowercase to easily search for
+        item["dislikeFoodList"].push(data.toLowerCase())
       }
     } //End Success
   }); //End ajax
@@ -113,7 +112,8 @@ function checkIfTheyLike() {
 
   //Get selected name and foodToTest
   var selectedName = document.getElementById("selectNameDropDown").value;
-  var foodToTest = document.getElementById("foodToTest").value;
+  var foodToTest = document.getElementById("foodToTest").value.toLowerCase();
+  console.log(foodToTest)
 
   //Loop through people to search for person and food
   var x;
@@ -137,8 +137,13 @@ function checkIfTheyLike() {
 
 //Use regex to search
 function searchStringInArray(str, strArray) {
+  //Update the regex for better searching
+  var pattern = '^' + str + '$';
+  console.log(pattern)
+  var regexPattern = new RegExp(pattern, 'gim')
+
   for (var j = 0; j < strArray.length; j++) {
-    if (strArray[j].match(str)) return 'Dislike';
+    if (strArray[j].match(regexPattern)) return 'Dislike';
   }
   return 'Like';
 }
@@ -171,7 +176,7 @@ function modalDislike(name, food) {
   var msgs = [name + ' hates ' + food + '.',
     name + ' will not eat ' + food + '.',
     'You better not feed ' + name + ' ' + food + '.',
-    'Do not feed ' + name + ' ' + food + '. They will not be happy',
+    'Do not feed ' + name + ' ' + food + '. He/She will not be happy',
   ]
 
   var msg = msgs[Math.floor(Math.random() * msgs.length)];
