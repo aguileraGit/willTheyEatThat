@@ -20,6 +20,34 @@
   <!-- Custom styles for this template -->
   <link href="sticky-footer.css" rel="stylesheet">
 
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa|Comfortaa:wght@300">
+
+  <style type="text/css">
+
+    .fancy-fonts {
+      font-family: Salsa;
+    }
+    .not-as-fancy {
+      font-family: Comfortaa;
+    }
+    hr {
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+      border: 0;
+      border-top: 2px solid rgba(0, 0, 0, 0.3);
+      width: 80%;
+    }
+    body {
+      background: rgb(34,193,195);
+      background: linear-gradient(151deg, rgba(34,193,195,0.8547794117647058) 0%, rgba(253,187,45,0.8911939775910365) 100%);
+    }
+    .modal-backdrop{
+      opacity:0.7 !important;
+      background: rgb(120, 120, 120)!important;
+    }
+  </style>
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -28,53 +56,65 @@
   <main role="main" class="flex-shrink-0">
 
     <div class="container">
-      <h1 class="mt-5">Will they eat that?</h1>
-      <p class="lead">Select a name. Enter a food. See if they like it.</p>
+
+      <div class="card mt-5 bg-light shadow-lg">
+        <div class="card-header">
+          <h1 class="display-3 fancy-fonts">Will they eat that?</h1>
+          <hr/>
+          <p class="lead not-as-fancy mt-3 mb-3 text-center"><small>Select a name. Enter a food. See if they like it.</small></p>
+        </div>
+        <div class="card-body">
+
+          <form class="needs-validation" novalidate id='foodTestingForm'>
+            <div class="row">
+              <!-- Create Column -->
+              <div class="order-col-2 order-col-sm-2 order-col-md-4 col-lg-6 col-xl-6">
+                <!-- Select Name -->
+                <div class="form-group">
+                  <label for="selectNameDropDown">Person in question...</label>
+                    <select class="form-control form-control-sm " id="selectNameDropDown">
+                    </select>
+                </div>
+              </div>
+
+              <!-- Create Column -->
+              <div class="order-col-2 order-col-sm-2 order-col-md-4 col-lg-6 col-xl-6">
+                <!-- Type in food -->
+                <div class="form-group">
+                  <label for="foodToTest">Will they eat...</label>
+                  <textarea class="form-control" id="foodToTest" rows="3" placeholder="Type food here" required></textarea>
+                  <div class="invalid-feedback">
+                    Enter food to test
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add row for the button. -->
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" align="center">
+                <button class="btn bg-warning" onclick="return checkIfTheyLike()">Survey Says</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
     </div>
 
-    <div class="container">
-      <form>
-        <div class="row">
-          <!-- Create Column -->
-          <div class="col-sm">
-            <!-- Select Name -->
-            <div class="form-group">
-              <label for="selectNameDropDown">Family Member</label>
-                <select class="form-control form-control-sm" id="selectNameDropDown">
-                </select>
-            </div>
-          </div>
-
-          <!-- Create Column -->
-          <div class="col-sm">
-            <!-- Type in food -->
-            <div class="form-group">
-              <label for="foodToTest">Do they like...</label>
-              <textarea class="form-control" id="foodToTest" rows="3"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- Add row for the button. -->
-        <div class="row">
-          <div class="col" align="center">
-            <button class="btn btn-primary" onclick="return checkIfTheyLike()">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade shadow-lg " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header" id="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title fancy-fonts" id="exampleModalLabel">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body not-as-fancy">
             <div id="modal-body-text"></div>
           </div>
           <div class="modal-footer">
@@ -89,7 +129,7 @@
 
   <footer class="footer mt-auto py-3">
     <div class="container">
-      <span class="text-muted">Send me an email for updates!</span>
+      <span class="text-muted">Out of date? Send me an email.</span>
     </div>
   </footer>
 
