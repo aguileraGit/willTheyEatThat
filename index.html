@@ -24,13 +24,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa|Comfortaa:wght@300">
 
   <style type="text/css">
-
     .fancy-fonts {
       font-family: Salsa;
     }
+
     .not-as-fancy {
       font-family: Comfortaa;
     }
+
     hr {
       margin-top: -1rem;
       margin-bottom: 1rem;
@@ -38,47 +39,53 @@
       border-top: 2px solid rgba(0, 0, 0, 0.3);
       width: 80%;
     }
+
     body {
-      background: rgb(34,193,195);
-      background: linear-gradient(151deg, rgba(34,193,195,0.8547794117647058) 0%, rgba(253,187,45,0.8911939775910365) 100%);
+      background: rgb(34, 193, 195);
+      background: linear-gradient(151deg, rgba(34, 193, 195, 0.8547794117647058) 0%, rgba(253, 187, 45, 0.8911939775910365) 100%);
     }
-    .modal-backdrop{
-      opacity:0.7 !important;
-      background: rgb(120, 120, 120)!important;
+
+    .modal-backdrop {
+      opacity: 0.7 !important;
+      background: rgb(120, 120, 120) !important;
     }
+
+
   </style>
 
 </head>
 
-<body class="d-flex flex-column h-100 mw-100">
+<body class="d-flex flex-column h-100">
 
   <!-- Begin page content -->
   <main role="main" class="flex-shrink-0">
 
-    <div class="container">
-
+    <!-- Main content -->
+    <div class="container w-100">
+      <!-- Card -->
       <div class="card mt-5 bg-light shadow-lg">
+
         <div class="card-header">
           <h1 class="display-3 fancy-fonts text-center">Will they eat that?</h1>
-          <hr/>
+          <hr />
           <p class="lead not-as-fancy mt-3 mb-3 text-center"><small>Select a name. Enter a food. See if they like it.</small></p>
         </div>
-        <div class="card-body">
 
+        <div class="card-body">
           <form class="needs-validation" novalidate id='foodTestingForm'>
             <div class="row">
               <!-- Create Column -->
-              <div class="order-col-12 order-col-sm-12 order-col-md-8 col-lg-6 col-xl-6">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <!-- Select Name -->
                 <div class="form-group">
                   <label for="selectNameDropDown">Person in question...</label>
-                    <select class="form-control form-control-sm " id="selectNameDropDown">
-                    </select>
+                  <select class="form-control form-control-sm " id="selectNameDropDown">
+                  </select>
                 </div>
               </div>
 
               <!-- Create Column -->
-              <div class="order-col-12 order-col-sm-12 order-col-md-4 col-lg-6 col-xl-6">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <!-- Type in food -->
                 <div class="form-group">
                   <label for="foodToTest">Will they eat...</label>
@@ -97,12 +104,9 @@
               </div>
             </div>
           </form>
-
         </div>
       </div>
-
     </div>
-
 
     <!-- Modal -->
     <div class="modal fade shadow-lg " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -123,7 +127,6 @@
         </div>
       </div>
     </div>
-
 
   </main>
 
