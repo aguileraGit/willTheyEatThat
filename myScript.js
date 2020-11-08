@@ -176,7 +176,7 @@ function modalDislike(name, food) {
   var msgs = [name + ' hates ' + food + '.',
     name + ' will not eat ' + food + '.',
     'You better not feed ' + name + ' ' + food + '.',
-    'Do not feed ' + name + ' ' + food + '. He/She will not be happy',
+    'Do not feed ' + name + ' ' + food + '. He/She will not be happy.',
   ]
 
   var msg = msgs[Math.floor(Math.random() * msgs.length)];
