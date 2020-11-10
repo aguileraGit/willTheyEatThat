@@ -137,9 +137,26 @@ function checkIfTheyLike() {
 
 //Use regex to search
 function searchStringInArray(str, strArray) {
-  //Update the regex for better searching
-  var pattern = '^' + str + '$';
+  //Create an empty pattern
+  var pattern = ''
+
+  //Split search terms
+  words = str.split(' ')
+
+  for (i = 0; i < words.length; i++) {
+    //Remove last char
+    word = words[i].slice(0, -1)
+    pattern += '(' + word + '[a-z]?)(\\b|s\\b|es\\b|ed\\b) '
+  }
+
+  //Remove last space
+  pattern = pattern.slice(0, -1)
+
+  //Add start/end
+  pattern = '^' + pattern + '$'
+
   console.log(pattern)
+
   var regexPattern = new RegExp(pattern, 'gim')
 
   for (var j = 0; j < strArray.length; j++) {

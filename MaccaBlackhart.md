@@ -7,5 +7,5 @@ canned artichokes
 fets
 bananas
 mustard
-basked fruit
+baked fruit
 gravy
