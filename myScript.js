@@ -140,6 +140,9 @@ function searchStringInArray(str, strArray) {
   //Create an empty pattern
   var pattern = ''
 
+  //Remove any spaces at the end
+  str = str.trim()
+
   //Split search terms
   words = str.split(' ')
 
