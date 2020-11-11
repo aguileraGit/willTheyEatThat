@@ -1,4 +1,3 @@
-//Set global vars
 
 //Define filenames
 var people = [{
@@ -23,7 +22,7 @@ var people = [{
   },
   {
     "name": "Janeth Aguilera",
-    "fileName": "MaliaAguilera.md",
+    "fileName": "JanethAguilera.md",
     "dislikeFoodList": []
   },
   {
@@ -62,7 +61,72 @@ window.addEventListener('load', function() {
   //Import food they dislike from *.md to list
   people.forEach(populateDislikeFoodList);
 
+  //Create Tabs
+  people.forEach(populateTabs);
+
 });
+
+
+function populateTabs(item) {
+  var tabNames = document.getElementById("tabsID");
+
+  //id's can not have spaces. Replace with '-'
+  var nameID = item['name'].replace(' ', '-')
+
+  //Append tab by name
+  $( '<li class="nav-item"><a class="nav-link" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
+}
+
+
+$('#tabsID').on('click', function (e) {
+  console.log('Clicked tab')
+  console.log(e.target.id)
+
+  var nameSelected = String(e.target.id)
+
+  //Get name to pull from dict
+  nameSelected = nameSelected.replace('-', ' ')
+  nameSelected = nameSelected.slice(0, -4)
+
+  var tabName = nameSelected.replace(' ', '-')
+
+  //Loop through people to search for person and food
+  var x;
+  for (x of people) {
+    if (x["name"] == nameSelected) {
+      //Ugh. Big mistake here. In populateDislikeFoodList, when
+      // pushing to x["dislikeFoodList"], I don't split it. I
+      // actually send a string of all the food. Over and over.
+      var listOfFoods = x["dislikeFoodList"][0].split('\n');
+    }
+  }
+
+  //Generate list and write into HTML
+  foodListText = '<ul class="list-group">'
+  for (var listItem = 0; listItem < listOfFoods.length; listItem++) {
+    foodListText += '<li class="list-group-item">'
+    foodListText += listOfFoods[listItem]
+    foodListText += '</li>'
+  }
+  foodListText += '</ul>'
+
+
+  //Create DIV
+  var htmlToAdd = '<div class="tab-pane" id='
+  htmlToAdd += tabName
+  htmlToAdd += ' role="tabpanel" aria-labelledby="profile-tab">'
+  htmlToAdd += foodListText
+  htmlToAdd += '</div>'
+
+  //Add it
+  document.getElementById("tabsContent").innerHTML += htmlToAdd;
+
+  //Show Tab
+  e.preventDefault()
+  $(this).tab('show')
+
+})
+
 
 function populateNameDropDown(item) {
   var nameDropDown = document.getElementById("selectNameDropDown");
@@ -94,11 +158,10 @@ function populateDislikeFoodList(item) {
 }
 
 function checkIfTheyLike() {
-
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   var form = document.getElementById("foodTestingForm");
 
-
+  //Make sure the user typed something in
   var textForm = document.getElementById("foodToTest")
   if (textForm.value.length < 1){
     textForm.classList.add('is-invalid');
