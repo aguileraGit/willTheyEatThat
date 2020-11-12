@@ -77,7 +77,9 @@ function populateTabs(item) {
   $( '<li class="nav-item"><a class="nav-link" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
 }
 
-
+//Display tab when clicked
+// Creating tabs and divs didn't work in seperate function. Instead when
+// a name is clicked on, it load the food, and creates the div on the fly
 $('#tabsID').on('click', function (e) {
   console.log('Clicked tab')
   console.log(e.target.id)
@@ -88,6 +90,7 @@ $('#tabsID').on('click', function (e) {
   nameSelected = nameSelected.replace('-', ' ')
   nameSelected = nameSelected.slice(0, -4)
 
+  //Tab name is used later on
   var tabName = nameSelected.replace(' ', '-')
 
   //Loop through people to search for person and food
@@ -110,7 +113,6 @@ $('#tabsID').on('click', function (e) {
   }
   foodListText += '</ul>'
 
-
   //Create DIV
   var htmlToAdd = '<div class="tab-pane" id='
   htmlToAdd += tabName
@@ -124,7 +126,6 @@ $('#tabsID').on('click', function (e) {
   //Show Tab
   e.preventDefault()
   $(this).tab('show')
-
 })
 
 
@@ -205,6 +206,9 @@ function searchStringInArray(str, strArray) {
 
   //Remove any spaces at the end
   str = str.trim()
+
+  //Another attempt to remove characters at the end
+  str = str.replace(/[ |\t|\s]+$/gm, '');
 
   //Split search terms
   words = str.split(' ')
