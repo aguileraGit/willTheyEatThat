@@ -116,14 +116,14 @@
         </div>
 
         <div class="card-body">
-          <form class="needs-validation" novalidate id='addFoodForm' name="addFood" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+          <form  id='addFoodForm' name="addFood" method="POST" data-netlify="true" data-netlify-recaptcha="true">
             <div class="row">
               <!-- Create Column -->
               <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <!-- Select Name -->
                 <div class="form-group">
                   <label for="selectNameDropDown">Select Yo-self</label>
-                  <select class="form-control form-control-sm " id="AddFoodselectNameDropDown">
+                  <select class="form-control form-control-sm" id="AddFoodselectNameDropDown">
                   </select>
                 </div>
               </div>
@@ -133,15 +133,12 @@
                 <!-- Type in food -->
                 <div class="form-group">
                   <label for="foodToTest">Add food(s) you dislike</label>
-                  <input class="form-control" id="foodToAdd" placeholder="Type food here" required></textarea>
-                  <div class="invalid-feedback">
-                    Enter food to test
-                  </div>
+                  <input class="form-control" id="foodToAdd" placeholder="Type food here"></textarea>
                 </div>
               </div>
             </div>
 
-            <div data-netlify-recaptcha="true"></div>
+            <div class="mx-auto" data-netlify-recaptcha="true"></div>
 
             <!-- Add row for the button. -->
             <div class="row">
@@ -199,7 +196,7 @@
   </footer>
 
   <!-- Load custom JS - Top: Flask, Bottom: Local File-->
-  <script src="myScript.js?103"></script>
+  <script src="myScript.js?104"></script>
 
 </body>
 

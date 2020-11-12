@@ -131,13 +131,31 @@ $('#tabsID').on('click', function (e) {
 
 //Submit food to add
 $("#addFoodForm").submit(function(e) {
+
+  var name = document.getElementById("AddFoodselectNameDropDown").value;
+  var food = document.getElementById("foodToAdd").value;
+
+  var formData = {"Name": name, "Food": food}
+  var serializedFormData = serialize(formData)
+
   e.preventDefault();
 
   var $form = $(this);
-  $.post($form.attr("action"), $form.serialize()).then(function() {
+
+  console.log(serializedFormData)
+
+  $.post($form.attr("action"), serializedFormData).then(function() {
     alert("Processing. Stay tuned.");
   });
 });
+
+//Forms to Netlify must be URL encoded
+function serialize(obj) {
+  var str = [];
+  for(var p in obj)
+     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+  return str.join("&");
+}
 
 
 function populateNameDropDown(item) {
