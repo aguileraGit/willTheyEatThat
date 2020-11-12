@@ -74,7 +74,7 @@ function populateTabs(item) {
   var nameID = item['name'].replace(' ', '-')
 
   //Append tab by name
-  $( '<li class="nav-item"><a class="nav-link" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
+  $( '<li class="nav-item"><a class="nav-link text-muted" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
 }
 
 //Display tab when clicked
@@ -129,12 +129,27 @@ $('#tabsID').on('click', function (e) {
 })
 
 
+//Submit food to add
+$("#addFoodForm").submit(function(e) {
+  e.preventDefault();
+
+  var $form = $(this);
+  $.post($form.attr("action"), $form.serialize()).then(function() {
+    alert("Processing. Stay tuned.");
+  });
+});
+
+
 function populateNameDropDown(item) {
   var nameDropDown = document.getElementById("selectNameDropDown");
-
   var option = document.createElement("option");
   option.text = item["name"]
   nameDropDown.add(option)
+
+  var addFoodDropDown = document.getElementById("AddFoodselectNameDropDown");
+  var option = document.createElement("option");
+  option.text = item["name"]
+  addFoodDropDown.add(option)
 }
 
 
