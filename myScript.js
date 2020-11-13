@@ -135,7 +135,7 @@ $("#addFoodForm").submit(function(e) {
   var name = document.getElementById("AddFoodselectNameDropDown").value;
   var food = document.getElementById("foodToAdd").value;
 
-  var formData = {"Name": name, "Food": food}
+  var formData = {"form-name": "addFood", "Name": name, "Food": food}
   var serializedFormData = serialize(formData)
 
   e.preventDefault();
@@ -147,7 +147,15 @@ $("#addFoodForm").submit(function(e) {
   $.post($form.attr("action"), serializedFormData).then(function() {
     alert("Processing. Stay tuned.");
   });
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: serializedFormData
+  })
+
 });
+
 
 //Forms to Netlify must be URL encoded
 function serialize(obj) {
