@@ -74,7 +74,7 @@ function populateTabs(item) {
   var nameID = item['name'].replace(' ', '-')
 
   //Append tab by name
-  $( '<li class="nav-item"><a class="nav-link" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
+  $( '<li class="nav-item"><a class="nav-link text-muted" id="' + nameID + '-tab" href="#' + nameID + '" data-toggle="tab" role="tab" selected="false">' + item['name'] + '</a></li>' ).appendTo(tabNames);
 }
 
 //Display tab when clicked
@@ -129,12 +129,53 @@ $('#tabsID').on('click', function (e) {
 })
 
 
+//Submit food to add
+$("#addFoodForm").submit(function(e) {
+
+  var name = document.getElementById("AddFoodselectNameDropDown").value;
+  var food = document.getElementById("foodToAdd").value;
+
+  var formData = {"form-name": "addFood", "Name": name, "Food": food}
+  var serializedFormData = serialize(formData)
+
+  e.preventDefault();
+
+  var $form = $(this);
+
+  console.log(serializedFormData)
+
+  $.post($form.attr("action"), serializedFormData).then(function() {
+    alert("Processing. Stay tuned.");
+  });
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: serializedFormData
+  })
+
+});
+
+
+//Forms to Netlify must be URL encoded
+function serialize(obj) {
+  var str = [];
+  for(var p in obj)
+     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+  return str.join("&");
+}
+
+
 function populateNameDropDown(item) {
   var nameDropDown = document.getElementById("selectNameDropDown");
-
   var option = document.createElement("option");
   option.text = item["name"]
   nameDropDown.add(option)
+
+  var addFoodDropDown = document.getElementById("AddFoodselectNameDropDown");
+  var option = document.createElement("option");
+  option.text = item["name"]
+  addFoodDropDown.add(option)
 }
 
 

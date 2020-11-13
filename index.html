@@ -23,16 +23,6 @@
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa|Comfortaa:wght@300">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64HCCJB7W0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-64HCCJB7W0');
-  </script>
-
   <style type="text/css">
     .fancy-fonts {
       font-family: Salsa;
@@ -82,7 +72,7 @@
         </div>
 
         <div class="card-body">
-          <form class="needs-validation" novalidate id='foodTestingForm'>
+          <form class="needs-validation" novalidate id='foodTestingForm' name="testFood">
             <div class="row">
               <!-- Create Column -->
               <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -117,14 +107,57 @@
         </div>
       </div> <!-- End Card -->
 
-      <!-- Start Tabs -->
+      <!-- Form -->
       <div class="card mt-5 bg-light shadow-lg">
+        <div class="card-header">
+          <h1 class=" display-4 fancy-fonts text-center">Update your list</h1>
+          <hr />
+          <p class="lead not-as-fancy mt-3 mb-3 text-center"><small>Select your name and add the food you dislike. It'll notify me.</small></p>
+        </div>
+
+        <div class="card-body">
+          <form  id='addFoodForm' name="addFood" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+            <div class="row">
+              <!-- Create Column -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <!-- Select Name -->
+                <div class="form-group">
+                  <label for="selectNameDropDown">Select Yo-self</label>
+                  <select class="form-control form-control-sm" id="AddFoodselectNameDropDown">
+                  </select>
+                </div>
+              </div>
+
+              <!-- Create Column -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <!-- Type in food -->
+                <div class="form-group">
+                  <label for="foodToTest">Add food(s) you dislike</label>
+                  <input class="form-control" id="foodToAdd" placeholder="Type food here"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="mx-auto" data-netlify-recaptcha="true"></div> -->
+
+            <!-- Add row for the button. -->
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" align="center">
+                <button class="btn bg-warning">Add Me</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End Form -->
+
+      <!-- Start Tabs -->
+      <div class="card my-5 bg-light shadow-lg">
         <div class="card-header">
           <h1 class=" display-4 fancy-fonts text-center">Browse</h1>
         </div>
 
-        <div class="card-body">
-
+        <div class="card-body mp-3 h6">
           <ul class="nav nav-tabs" id="tabsID" role="tablist"></ul>
           <div class="tab-content" id="tabsContent"></div>
         </div>
@@ -158,12 +191,12 @@
 
   <footer class="footer mt-auto py-3 align-middle">
     <div class="container">
-      <span class="text-muted align-middle">Out of date? Send me an email.</span>
+      <span class="text-muted align-middle">Ya'll needy</span>
     </div>
   </footer>
 
   <!-- Load custom JS - Top: Flask, Bottom: Local File-->
-  <script src="myScript.js?103"></script>
+  <script src="myScript.js?104"></script>
 
 </body>
 
